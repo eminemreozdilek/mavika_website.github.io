@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Галерея - Сайт Виктории Холкиной (21ip1b)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            padding-top: 60px; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.9); 
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80%;
+        }
+        #modal-caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /* Arrow styles */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: #f1f1f1;
+            font-weight: bold;
+            font-size: 30px;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .prev:hover, .next:hover {
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Фотогалерея</h1>
+        <nav>
+            <ul>
+            <li><a href="{{ url_for('index') }}">Главная</a></li>
+            <li><a href="{{ url_for('about') }}">О сайте</a></li>
+            <li><a href="{{ url_for('gallery') }}">Галерея</a></li>
+            <li><a href="{{ url_for('contact') }}">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Мои любимые фотографии</h2>
+        <p>
+            Добро пожаловать в мою фотогалерею! Ниже представлены некоторые из моих любимых снимков. 
+            Наведите курсор на изображение, чтобы увидеть лёгкое увеличение.
+        </p>
+        
+        <!-- Gallery Container -->
+        <div class="gallery-container">
+            <figure>
+                <img src="{{ url_for('static', filename='images/pic1.jpg') }}"  alt="Объятия" class="gallery-img">
+                <figcaption>Мое любимое место со времен школы. Вокруг можно кататься на роликах, а внутри узнавать что-то новое.</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ url_for('static', filename='images/pic2.jpg') }}"  alt="Держась за руки" class="gallery-img">
+                <figcaption>Впервые за несколько лет на катке...Надеюсь навык не потерян и при исполнении двойного тулупа из рубки вместо музыки раздастся голос с фразой "Это было великолепно!"</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ url_for('static', filename='images/pic3.jpg') }}"  alt="Волна и шампанское" class="gallery-img">
+                <figcaption><p>Она поёт — и звуки тают,</p>
+				
+					<p>Как поцелуи на устах,</p>
+					
+					<p>Глядит — и небеса играют</p>
+					
+					<p>В ее божественных глазах;</p>
+
+					<p>Идет ли — все ее движенья,</p>
+					
+					<p></p>
+					
+					<p>Иль молвит слово — все черты</p>
+					
+					<p>Так полны чувства, выраженья,</p>
+					
+					<p>Так полны дивной простоты.</p></figcaption>
+            </figure>
+            <figure>
+                <img src="{{ url_for('static', filename='images/pic4.jpg') }}"  alt="Как поцеловать любимого" class="gallery-img">
+                <figcaption>После насыщенного дня здорово проветрить свои мысли в компании друзей и покататься на аттракционах. Колесо обозрения...Прокатимся?</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ url_for('static', filename='images/pic5.jpg') }}" alt="Статуя Венеры" class="gallery-img">
+                <figcaption>Моя ниндзя-черепашка Чипа! Одного поста не хватит рассказать о том на сколько она изменила нашу жизнь.</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ url_for('static', filename='images/pic6.jpg') }}"  alt="Аха, таби таби" class="gallery-img">
+                <figcaption>В продолжении о моих любимых местах: Ботанический Сад.Три слова: красота, спокойствие и умиротворение.</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ url_for('static', filename='images/pic7.jpg') }}"  alt="Аха, таби таби" class="gallery-img">
+                <figcaption>Чтобы дать разгон вашей лимфе необходимо энергично двигаться, а что бы плавно начать энергично двигаться,нужно плавать.Говорю это с высоты своего опыта дипломированного дельфина.</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ url_for('static', filename='images/pic8.jpeg') }}"  alt="Аха, таби таби" class="gallery-img">
+                <figcaption>Раба желудка. По итальянски я знаю только Адриано Челентано и Иль Патио. Хорошая музыка с вкусной пастой, рекомендую.</figcaption>
+            </figure>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Разработано: <strong>Викторией Холкиной (21ip1b)</strong></p>
+        <p>Email: <a href="mailto:lyubluviktoria@gmail.com">lyubluviktoria@gmail.com</a></p>
+    </footer>
+
+    <!-- Modal for fullscreen image -->
+    <div id="modal" class="modal">
+        <span class="close" id="modal-close">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <div id="modal-caption"></div>
+        <span class="prev" id="modal-prev">&#10094;</span>
+        <span class="next" id="modal-next">&#10095;</span>
+    </div>
+    
+    <script>
+        // Get modal elements
+        const modal = document.getElementById("modal");
+        const modalImg = document.getElementById("modal-img");
+        const modalCaption = document.getElementById("modal-caption");
+        const modalClose = document.getElementById("modal-close");
+        const modalPrev = document.getElementById("modal-prev");
+        const modalNext = document.getElementById("modal-next");
+        
+        // Get all gallery images and store them in an array
+        const galleryImages = Array.from(document.querySelectorAll(".gallery-img"));
+        let currentIndex = 0;
+        
+        // Function to update modal content based on current index
+        function updateModal(index) {
+            const img = galleryImages[index];
+            modalImg.src = img.src;
+            modalCaption.innerHTML = img.parentElement.querySelector("figcaption").innerHTML;
+            
+            // Hide or show arrows based on index position
+            modalPrev.style.display = (index === 0) ? "none" : "block";
+            modalNext.style.display = (index === galleryImages.length - 1) ? "none" : "block";
+        }
+        
+        // Add click event to each gallery image
+        galleryImages.forEach((img, index) => {
+            img.addEventListener("click", function() {
+                currentIndex = index;
+                updateModal(currentIndex);
+                modal.style.display = "block";
+            });
+        });
+        
+        // Close the modal when the close button is clicked
+        modalClose.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+        
+        // Navigate to previous image
+        modalPrev.addEventListener("click", function(event) {
+            event.stopPropagation();
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateModal(currentIndex);
+            }
+        });
+        
+        // Navigate to next image
+        modalNext.addEventListener("click", function(event) {
+            event.stopPropagation();
+            if (currentIndex < galleryImages.length - 1) {
+                currentIndex++;
+                updateModal(currentIndex);
+            }
+        });
+        
+        // Close the modal when clicking outside the image area
+        modal.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

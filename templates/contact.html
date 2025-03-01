@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Contact - Website by Viktoria Holkina (21ip1b)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Контактные данные</h1>
+        <nav>
+        <nav>
+            <ul>
+            <li><a href="{{ url_for('index') }}">Главная</a></li>
+            <li><a href="{{ url_for('about') }}">О сайте</a></li>
+            <li><a href="{{ url_for('gallery') }}">Галерея</a></li>
+            <li><a href="{{ url_for('contact') }}">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Будем на связи</h2>
+        <p>
+            По любым вопросам и предложения обращаться по следующим контактным данным:
+        </p>
+        
+        <p>
+            <strong>Email:</strong> <a href="mailto:lyubluviktoria@gmail.com">lyubluviktoria@gmail.com</a><br>
+            <strong>Телефон:</strong> +7 (965) 673-79-39
+        </p>
+
+        <!-- Simple contact form (not functional without server-side scripting, 
+             but it demonstrates a form in HTML) -->
+        <form action="#" method="get">
+            <label for="name">Имя:</label><br>
+            <input type="text" id="name" name="name" size="30"><br><br>
+            
+            <label for="message">Сообщение:</label><br>
+            <textarea id="message" name="message" rows="5" cols="30"></textarea><br><br>
+            
+            <input type="submit" value="Отправить">
+        </form>
+    </main>
+    
+    <footer>
+        <p>Разработано: <strong>Викторией Холкиной (21ip1b)</strong></p>
+        <p>Email: <a href="mailto:lyubluviktoria@gmail.com">lyubluviktoria@gmail.com</a></p>
+    </footer>
+</body>
+</html>

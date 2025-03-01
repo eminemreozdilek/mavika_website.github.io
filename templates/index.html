@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Веб-сайт Виктории Холкиной (21ip1b)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Личный блог</h1>
+        <!-- Навигационное меню -->
+        <nav>
+            <ul>
+            <li><a href="{{ url_for('index') }}">Главная</a></li>
+            <li><a href="{{ url_for('about') }}">О сайте</a></li>
+            <li><a href="{{ url_for('gallery') }}">Галерея</a></li>
+            <li><a href="{{ url_for('contact') }}">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Добро пожаловать!</h2>
+        <p>
+            Это мини блог, наполненный фотографиями, впечатлениям и идеями. Создано 
+            <strong>Викторией Холкиной, студенткой группы 21ИП1б</strong>.
+        </p>
+        
+        <!-- Обязательная ссылка на Пензенский государственный технологический университет -->
+        <p>
+            Посетите 
+            <a href="http://www.penzgtu.ru">Пензенский государственный технологический университет</a>
+            для получения дополнительной информации.
+        </p>
+
+        <!-- Пример изображения (желательно менее 50КБ, если возможно) -->
+        <figure>
+            <img src="{{ url_for('static', filename='images/me.jpg') }}"  alt="Пример фотографии" width="400" height="400">
+            <figcaption>Автор этого мини блога выглядит как-то так</figcaption>
+        </figure>
+
+        <p>
+            **Ключевая информация**: Сайт должен корректно работать в различных браузерах (Firefox, Chrome, Internet Explorer). 
+            Если изображения или Flash отключены, текст остается читаемым и навигация функционирует.
+        </p>
+    </main>
+    
+    <footer>
+        <p>Разработано: <strong>Викторией Холкиной (21ip1b)</strong></p>
+        <p>Email: <a href="mailto:lyubluviktoria@gmail.com">lyubluviktoria@gmail.com</a></p>
+    </footer>
+</body>
+</html>
